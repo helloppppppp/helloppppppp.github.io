@@ -1,44 +1,844 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
-  <meta charset="utf-8">
-  <title>Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio of Linda Huang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        html {
+            overflow-y: scroll; 
+            height: 100%;
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            height: 0px; 
+            width: 6px; 
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #ffffff; 
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #000000; 
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #333333; 
+        }
+
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+        }
+        
+        .active-link .link-border {
+        }
+        
+        .project-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        
+        .copyright-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            line-height: 1;
+        }
+        
+        #cv-content-container ul li {
+            margin-bottom: 0.25rem;
+        }
+        
+    </style>
 </head>
-<body>
+<body class="text-black bg-white selection:bg-black selection:text-white">
 
-  <p>Released games and interactive experiences I’ve contributed to as a technical artist and art team lead.</p>
-  <p>Work includes asset production, integration, optimization, and pipeline management.</p>
+    <div class="fixed top-6 right-6 z-40 flex items-center space-x-2 text-xs tracking-widest font-sans">
+        <button onclick="setLanguage('zh')" id="btn-zh" class="group transition-colors focus:outline-none">
+            <span class="pb-1 text-black font-bold transition-all duration-300">繁</span>
+        </button>
+        <button onclick="setLanguage('en')" id="btn-en" class="group transition-colors focus:outline-none">
+            <span class="pb-1 text-gray-400 hover:text-black transition-all duration-300">EN</span>
+        </button>
+    </div>
 
-  <h2>The Star Named EOS (2022/10–2024/7)</h2>
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white hover:text-gray-300 transition z-50 p-2">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        
+        <div id="lightbox-content" class="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center w-full">
+            <img id="lightbox-img" src="" alt="Full Screen" class="hidden max-h-[85vh] object-contain shadow-2xl bg-white">
+            
+            <div id="lightbox-video-wrapper" class="hidden w-full max-w-5xl aspect-video bg-black shadow-2xl">
+                <iframe id="lightbox-iframe" class="w-full h-full" src="" title="Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-modified; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 
-  <p>
-    <img src="https://ik.imagekit.io/l4vmfnvnev/steam-logo-png_seeklogo-290636.png" 
-         alt="Steam Logo" width="20" height="20" style="vertical-align: middle;">
-    <a href="https://store.steampowered.com/app/1619230/The_Star_Named_EOS/" target="_blank">
-      Steam Store Page
-    </a>
-  </p>
+    <div class="flex flex-col md:flex-row min-h-screen">
 
-  <p>The Star Named EOS is a story-rich puzzle adventure built around photography.</p>
+        <aside class="w-full md:w-[22%] bg-white md:border-b-0 flex flex-col p-4 md:pt-8 md:pr-8 md:pb-8 md:pl-12 z-20 relative">
+            
+            <div class="flex-1 flex flex-col justify-start">
+                
+                <nav class="order-1 md:order-1 flex overflow-x-auto md:overflow-x-hidden whitespace-nowrap md:whitespace-normal space-x-2 py-2 md:border-none md:flex-col md:space-x-0 md:space-y-2 custom-scroll mt-4 md:mt-12">
+                    <!-- Home -->
+                    <a href="#" onclick="showPage('home', this)" id="nav-home" class="nav-link block text-xl md:text-2xl tracking-tighter transition-all duration-300 hover:font-bold">
+                        <span class="font-bold pb-1" data-i18n="nav-home">home</span>
+                    </a>
+                    <!-- About -->
+                    <a href="#" onclick="showPage('about', this)" id="nav-about" class="nav-link block text-xl md:text-2xl tracking-tighter transition-all duration-300 hover:font-bold">
+                        <span class="font-normal pb-1" data-i18n="nav-about">about</span>
+                    </a>
+                    <!-- Showcase -->
+                    <a href="#" onclick="showPage('showcase', this)" id="nav-showcase" class="nav-link block text-xl md:text-2xl tracking-tighter transition-all duration-300 hover:font-bold">
+                        <span class="font-normal pb-1" data-i18n="nav-showcase">showcase</span>
+                    </a>
+                    <!-- Projects -->
+                    <a href="#" onclick="showPage('projects', this)" id="nav-projects" class="nav-link block text-xl md:text-2xl tracking-tighter transition-all duration-300 hover:font-bold">
+                        <span class="font-normal pb-1" data-i18n="nav-projects">projects</span>
+                    </a>
+                </nav>
 
-  <h3>Roles:</h3>
-  <p>Art pipeline planning, animation, VFX, asset optimization</p>
+                <div class="order-2 md:order-2 flex justify-start space-x-2 mt-4 md:mt-10 mb-4 md:mb-0">
+                     <a href="https://linktr.ee/lindahuangart" target="_blank" class="text-gray-400 hover:text-black transition-colors duration-300 block w-5 h-5">
+                        <img src="https://ik.imagekit.io/l4vmfnvnev/icons8-tree-48.png" alt="Linktree" class="w-full h-full object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
+                    </a>
+                    <a href="https://www.linkedin.com/in/linda-huang-4a4652ba" target="_blank" class="text-gray-400 hover:text-black transition-colors duration-300 block w-5 h-5">
+                        <img src="https://ik.imagekit.io/l4vmfnvnev/icons8-linkedin-48.png" alt="LinkedIn" class="w-full h-full object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
+                    </a>
+                     <a href="https://x.com/_linda_huang" target="_blank" class="text-gray-400 hover:text-black transition-colors duration-300 block w-5 h-5">
+                        <img src="https://ik.imagekit.io/l4vmfnvnev/icons8-twitter-48.png" alt="Twitter" class="w-full h-full object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
+                   </a>
+                    <a href="mailto:linda.helloppppppp@gmail.com" class="text-gray-400 hover:text-black transition-colors duration-300 block w-5 h-5">
+                        <img src="https://ik.imagekit.io/l4vmfnvnev/icons8-email-48.png" alt="Email" class="w-full h-full object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
+                    </a>
+                </div>
 
-  <h3>Contributions:</h3>
-  <ul>
-    <li>Defined overall art workflow and technical specifications</li>
-    <li>Led animation and VFX design to support emotional storytelling</li>
-    <li>Collaborated with programmers to improve runtime performance and project stability</li>
-  </ul>
+                <div class="hidden md:block order-3 mt-10 text-center md:text-left">
+                    <p class="text-xs font-light text-gray-500 leading-relaxed max-w-[200px] mx-auto md:mx-0" data-i18n="sidebar-intro">
+                        Linda Huang | Senior Artist & Technical Generalist Artist
+                    </p>
+                </div>
+            </div>
 
-  <iframe 
-    width="854" 
-    height="480" 
-    src="https://www.youtube.com/embed/oDcaXGu1SM0" 
-    title="YouTube video player" 
-    frameborder="0" 
-    allowfullscreen>
-  </iframe>
+            <div class="hidden md:block text-gray-400 mt-10 order-4">
+                <p class="copyright-text" data-i18n="copyright-line1">&copy; 2025 Linda Huang. Icons by <a href="https://icons8.com/" target="_blank" class="hover:underline">Icons8</a>.</p>
+            </div>
+            
+        </aside>
 
+        <!-- Content -->
+        <main id="main-content" class="flex-1 w-full md:h-screen md:overflow-y-auto custom-scroll bg-white relative">
+            
+            <style>
+                @media (min-width: 768px) { /* md: breakpoint */
+                    #main-content {
+                        overflow-y: scroll !important;
+                    }
+                }
+            </style>
+            
+            <div class="max-w-6xl md:max-w-5xl mx-auto px-6 py-12 md:px-12 md:py-20 md:ml-5">
+                
+                <section id="home" class="page-section flex flex-col pt-0 mb-20 h-[85vh]">
+                    <div class="w-full h-full relative">
+                        <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/1600x900/E0E0E0/000000?text=Home+Visual';" 
+                             alt="[極簡主義建築圖片]" 
+                             class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                    </div>
+                </section>
+
+                <!-- SHOWCASE -->
+                
+                <!-- SHOWCASE (updated videos) -->
+                <section id="showcase" class="page-section hidden flex flex-col pt-0 mb-20">
+                    <h2 class="text-xl md:text-2xl font-bold uppercase tracking-tighter mb-8" data-i18n="title-showcase">SHOWCASE</h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+
+                        <div class="cursor-pointer img-zoom-container aspect-video bg-gray-900 relative group" onclick="openLightbox('Y04orb0R_do', 'youtube')">
+                            <img src="https://img.youtube.com/vi/Y04orb0R_do/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Y04orb0R_do/hqdefault.jpg';" alt="[YouTube 影片封面圖]" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans" data-i18n="label-video">
+                                VIDEO SHOWREEL
+                            </div>
+                        </div>
+    
+                        <div class="cursor-pointer img-zoom-container aspect-video bg-gray-900 relative group" onclick="openLightbox('fWT3caR9li4', 'youtube')">
+                            <img src="https://img.youtube.com/vi/fWT3caR9li4/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/fWT3caR9li4/hqdefault.jpg';" alt="[YouTube 影片封面圖]" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans" data-i18n="label-video">
+                                VIDEO SHOWREEL
+                            </div>
+                        </div>
+    
+                        <div class="cursor-pointer img-zoom-container aspect-video bg-gray-900 relative group" onclick="openLightbox('iG443wevoq8', 'youtube')">
+                            <img src="https://img.youtube.com/vi/iG443wevoq8/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/iG443wevoq8/hqdefault.jpg';" alt="[YouTube 影片封面圖]" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans" data-i18n="label-video">
+                                VIDEO SHOWREEL
+                            </div>
+                        </div>
+    
+                        <div class="cursor-pointer img-zoom-container aspect-video bg-gray-900 relative group" onclick="openLightbox('OT6_Pa3Lco8', 'youtube')">
+                            <img src="https://img.youtube.com/vi/OT6_Pa3Lco8/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/OT6_Pa3Lco8/hqdefault.jpg';" alt="[YouTube 影片封面圖]" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans" data-i18n="label-video">
+                                VIDEO SHOWREEL
+                            </div>
+                        </div>
+    
+                        <div class="cursor-pointer img-zoom-container aspect-video bg-gray-900 relative group" onclick="openLightbox('3pLGqAOTWaY', 'youtube')">
+                            <img src="https://img.youtube.com/vi/3pLGqAOTWaY/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/3pLGqAOTWaY/hqdefault.jpg';" alt="[YouTube 影片封面圖]" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans" data-i18n="label-video">
+                                VIDEO SHOWREEL
+                            </div>
+                        </div>
+    
+                        <div class="cursor-pointer img-zoom-container aspect-video bg-gray-900 relative group" onclick="openLightbox('cn-iTzdKybM', 'youtube')">
+                            <img src="https://img.youtube.com/vi/cn-iTzdKybM/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/cn-iTzdKybM/hqdefault.jpg';" alt="[YouTube 影片封面圖]" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans" data-i18n="label-video">
+                                VIDEO SHOWREEL
+                            </div>
+                        </div>
+    
+                        <div class="cursor-pointer img-zoom-container aspect-video bg-gray-900 relative group" onclick="openLightbox('K_anRVvkUMU', 'youtube')">
+                            <img src="https://img.youtube.com/vi/K_anRVvkUMU/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/K_anRVvkUMU/hqdefault.jpg';" alt="[YouTube 影片封面圖]" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans" data-i18n="label-video">
+                                VIDEO SHOWREEL
+                            </div>
+                        </div>
+    
+                        <div class="cursor-pointer img-zoom-container aspect-video bg-gray-900 relative group" onclick="openLightbox('U5cHKg5jMiI', 'youtube')">
+                            <img src="https://img.youtube.com/vi/U5cHKg5jMiI/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/U5cHKg5jMiI/hqdefault.jpg';" alt="[YouTube 影片封面圖]" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans" data-i18n="label-video">
+                                VIDEO SHOWREEL
+                            </div>
+                        </div>
+    
+                        <div class="cursor-pointer img-zoom-container aspect-video bg-gray-900 relative group" onclick="openLightbox('TCqMqZ4k1aM', 'youtube')">
+                            <img src="https://img.youtube.com/vi/TCqMqZ4k1aM/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/TCqMqZ4k1aM/hqdefault.jpg';" alt="[YouTube 影片封面圖]" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans" data-i18n="label-video">
+                                VIDEO SHOWREEL
+                            </div>
+                        </div>
+    
+                        <div class="cursor-pointer img-zoom-container aspect-video bg-gray-900 relative group" onclick="openLightbox('Wlbi6aNQtBc', 'youtube')">
+                            <img src="https://img.youtube.com/vi/Wlbi6aNQtBc/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Wlbi6aNQtBc/hqdefault.jpg';" alt="[YouTube 影片封面圖]" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans" data-i18n="label-video">
+                                VIDEO SHOWREEL
+                            </div>
+                        </div>
+    
+                    </div>
+                </section>
+
+
+                <!-- ABOUT -->
+                <section id="about" class="page-section hidden flex-col justify-center mb-20 pt-0">
+                    <h2 class="text-xl md:text-2xl font-bold uppercase tracking-tighter mb-8" data-i18n="title-about">ABOUT</h2>
+                    
+                    <div class="max-w-3xl">
+                        <h3 class="text-4xl md:text-3xl font-bold leading-tight mb-2" data-i18n="about-title">Linda Huang</h3>
+                        <h4 class="text-xl md:text-base font-normal text-gray-700 mb-8" data-i18n="about-subtitle">Senior Artist / Technical Generalist Artist</h4>
+
+                        <div id="cv-content-container" class="max-w-3xl text-base leading-relaxed text-gray-800 font-light" data-i18n="about-content-html">
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PROJECTS -->
+                <section id="projects" class="page-section hidden flex-col pt-0 mb-20">
+                    <h2 class="text-xl md:text-2xl font-bold uppercase tracking-tighter mb-12" data-i18n="title-projects">PROJECTS</h2>
+
+                    <div class="space-y-0">
+                        
+                        <div id="project-1" class="border-b border-gray-200 transition-all duration-300">
+                            <button onclick="toggleProject('project-1')" class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">The Star Named EOS</h3>
+                                    <span class="font-sans text-sm text-gray-500 mt-2 block md:inline-block">2022/10 – 2024/7</span>
+                                </div>
+                                <i data-lucide="plus" class="w-7 h-7 text-gray-400 transform transition-transform duration-300 md:ml-6 mt-4 md:mt-0"></i>
+                            </button>
+                            
+                            <div class="project-content">
+                                <div class="pb-8 pt-4 space-y-6">
+                                    <p class="text-gray-600 font-light max-w-2xl" data-i18n="project-1-desc">
+                                        https://store.steampowered.com/app/1619230/The_Star_Named_EOS/
+
+                                        The Star Named EOS is a story-rich puzzle adventure built around photography.
+
+                                        Roles: Art pipeline planning, animation, VFX, asset optimization
+
+                                        Contributions:
+
+                                            • Defined overall art workflow and technical specifications
+
+                                            • Led animation and VFX design to support emotional storytelling
+
+                                            • Collaborated with programmers to improve runtime performance and project stability
+                                    </p>
+                                    <div class="img-zoom-container aspect-video rounded-lg overflow-hidden bg-gray-100 shadow-lg cursor-pointer" onclick="openLightbox('https://placehold.co/1000x560/E0E0E0/000000?text=The Star Named EOS', 'image')">
+                                        <img src="https://placehold.co/1000x560/E0E0E0/000000?text=The Star Named EOS" onerror="this.onerror=null; this.src='https://placehold.co/800x450/000000/FFFFFF?text=Project+1+Placeholder';" alt="[The Star Named EOS]" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="h-20"></div>
+
+            </div>
+
+            <button onclick="scrollToTop()" id="backToTopBtn" class="fixed bottom-8 left-8 md:left-[24%] z-40 opacity-0 pointer-events-none transition-opacity duration-500 flex items-center space-x-2 text-black hover:opacity-70 group">
+                <i data-lucide="arrow-up" class="w-5 h-5 border border-black rounded-full p-1 group-hover:bg-black group-hover:text-white transition-colors"></i>
+                <span class="text-xs tracking-widest uppercase hidden md:inline font-sans" data-i18n="back-to-top">Top</span>
+            </button>
+        </main>
+    </div>
+
+    <script>
+
+        lucide.createIcons();
+
+        const cvContentHTML_en = `
+            <p class="mb-6 font-normal">With 10+ years of experience in game development, specializing in asset pipeline planning, art-tech integration, and performance optimization. Versatile in producing 2D/3D assets, UI, animation, and VFX, with hands-on experience in Unity and Blender, including team training. Capable of leading visual direction and providing comprehensive art solutions across a wide range of projects.</p>
+            <p class="mb-20 font-normal">Experienced in managing a 10-person art team, with ability in cross-functional communication, outsourcing coordination, and production scheduling. Brings a strong balance of technical knowledge, creative vision, and team leadership to game development environments.</p>
+
+            <h4 class="text-xl font-bold uppercase tracking-wider mt-10 mb-4">PROFESSIONAL EXPERIENCE</h4>
+
+            <div class="mb-8 border-b border-gray-200 pb-8">
+                <h5 class="text-lg font-bold">Akatsuki Taiwan Inc., Taipei, Taiwan</h5>
+                <p class="text-base">Lead Artist / Senior Artist / Technical Artist</p>
+                <p class="text-sm text-gray-500 mb-10">Dec 2015 - Aug 2025</p>
+                
+                <div class="space-y-4 ml-0 md:ml-4">
+                    <p class="font-bold text-base">Team Management & Cross-Department Collaboration</p>
+                    <ul class="list-disc ml-6 space-y-1 text-gray-800 font-light text-base">
+                        <li>Led a 10-person art team through project development; optimized asset pipeline to improve efficiency and reduce bug reports</li>
+                        <li>Facilitated cross-functional communication to ensure smooth development workflows</li>
+                        <li>Managed outsourcing and project timelines, ensuring deliverables were on time and up to quality standards</li>
+                    </ul>
+
+                    <p class="font-bold text-base mt-4">Technical Planning & Performance Optimization</p>
+                    <ul class="list-disc ml-6 space-y-1 text-gray-800 font-light text-base">
+                        <li>Led early-stage technical planning and asset pipeline setup, establishing standards to support stable asset integration</li>
+                        <li>Spearheaded asset optimization efforts to improve performance on low- and mid-tier devices</li>
+                        <li>Experienced in Unity asset implementation, including import, setup, and integration, reducing tech barriers and delivery time</li>
+                    </ul>
+
+                    <p class="font-bold text-base mt-4">Art Production & Knowledge Sharing</p>
+                    <ul class="list-disc ml-6 space-y-1 text-gray-800 font-light text-base">
+                        <li>Versatile in producing 2D/3D assets, UI, animation, and VFX, with flexible support across various project styles</li>
+                        <li>Designed and led internal Unity and Blender training programs, helping team members quickly gain implementation skills</li>
+                    </ul>
+                </div>
+
+                <h6 class="font-bold text-lg mt-8 mb-2">Projects:</h6>
+                <!-- 使用 grid 排版 Projects 時間軸 -->
+                <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_3fr] gap-x-4 gap-y-1 text-sm ml-6 text-gray-800 font-light">
+                    <span class="font-light">Oct. 2022 - Jul. 2024</span><span class="font-normal">The Star Named EOS (Steam)</span>
+                    <span class="font-light">Aug. 2023 - Apr. 2024</span><span class="font-normal">Designer Creative Lab. (Game Art Demo)</span>
+                    <span class="font-light">May. 2021 - Oct. 2021</span><span class="font-normal">The Wizard of Eggz (Mobile Game)</span>
+                    <span class="font-light">Jan. 2021 - May. 2021</span><span class="font-normal">Prisoner VS Jailer (Mobile Game)</span>
+                    <span class="font-light">Nov. 2020 - Jan. 2021</span><span class="font-normal">SML WONDER EXPO (Physical Exhibition)</span>
+                    <span class="font-light">Aug. 2016 - Nov. 2020</span><span class="font-normal">ONE PIECE BON! BON! JOURNEY!! (Mobile Game)</span>
+                    <span class="font-light">Jan. 2016 - Dec. 2016</span><span class="font-normal">The Beaters (Mobile Game)</span>
+                </div>
+            </div>
+
+            <div class="mb-8 border-b border-gray-200 pb-8">
+                <h5 class="text-lg font-bold">XPEC Entertainment inc., Taipei, Taiwan</h5>
+                <p class="text-base">Senior Artist / 2D & UI Artist</p>
+                <p class="text-sm text-gray-500 mb-4">Jan. 2010 - May. 2015</p>
+                <ul class="list-disc ml-6 space-y-1 text-gray-800 font-light text-base">
+                    <li>Contributed to mobile and social game development with a focus on 2D asset creation, UI/UX design, and animation.</li>
+                    <li>Built a foundation in pipeline design through UI flow planning and Unity implementation.</li>
+                </ul>
+            </div>
+
+            <h4 class="text-xl font-bold uppercase tracking-wider mt-10 mb-4">EDUCATION</h4>
+            <div class="mb-8 border-b border-gray-200 pb-8">
+                <h5 class="text-lg font-bold">Fu Jen Catholic University, Taipei, Taiwan</h5>
+                <p class="text-base">Bachelor of Art, 2005 - 2009</p>
+            </div>
+
+            <h4 class="text-xl font-bold uppercase tracking-wider mt-10 mb-4">SKILLS</h4>
+            <div class="space-y-4 ml-0 md:ml-4">
+                <ul class="list-disc ml-6 space-y-1 text-gray-800 font-light text-base">
+                    <li>Engine Tools: <span class="font-normal">Unity, Github</span></li>
+                    <li>Design Softwares: <span class="font-normal">Blender, Photoshop, Illustrator</span></li>
+                    <li>Art & Design Skills: <span class="font-normal">2D Illustration, 3D Modeling, Texturing, Rigging, Animation, VFX, UI/UX Design</span></li>
+                    <li>Workflow Management: <span class="font-normal">Agile/Scrum, Kanban, Asset Pipeline Optimization, Outsourcing Coordination.</span></li>
+                </ul>
+            </div>
+        `;
+        
+        const cvContentHTML_zh = `
+            <p class="mb-6 font-normal">10年＋的遊戲開發經驗，專長於美術資源製程規劃、美術技術整合與效能優化。擅長2D/3D美術資源、UI、動畫和視覺特效的製作，擁有Unity和Blender的實務經驗，也包括團隊訓練。能夠領導視覺方向並為各種專案提供全面的美術解決方案。</p>
+            <p class="mb-20 font-normal">同時擁有管理10人美術團隊的經驗，擅長跨部門溝通、外包協調和製作進度安排。能夠為遊戲開發帶來技術、創意和團隊領導。</p>
+
+            <h4 class="text-xl font-bold uppercase tracking-wider mt-10 mb-4">PROFESSIONAL EXPERIENCE</h4>
+
+            <div class="mb-8 border-b border-gray-200 pb-8">
+                <h5 class="text-lg font-bold">Akatsuki Taiwan Inc., Taipei, Taiwan</h5>
+                <p class="text-base">Lead Artist / Senior Artist / Technical Artist</p>
+                <p class="text-sm text-gray-500 mb-10">Dec 2015 - Aug 2025</p>
+                
+                <div class="space-y-4 ml-0 md:ml-4">
+                    <p class="font-bold text-base">團隊管理與跨部門協作</p>
+                    <ul class="list-disc ml-6 space-y-1 text-gray-800 font-light text-base">
+                        <li>帶領 10 人美術團隊參與專案開發，設計並優化美術資源製程，提升效率並顯著降低 bug 回報率</li>
+                        <li>負責與企劃、工程等部門溝通，確保團隊穩定輸出</li>
+                        <li>具專案與外包管理經驗，擔任溝通窗口，負責時程追蹤與品質控管，確保項目如期如質完成</li>
+                    </ul>
+
+                    <p class="font-bold text-base mt-4">技術規劃與效能優化</p>
+                    <ul class="list-disc ml-6 space-y-1 text-gray-800 font-light text-base">
+                        <li>L擔任專案初期的技術研究與整合、美術製程規劃負責人，建立技術標準，確保資源可穩定導入</li>
+                        <li>主導美術資源效能優化，提升中低階裝置的穩定性</li>
+                        <li>熟悉 Unity 實裝流程，能獨立完成資源匯入、設定與整合，降低技術門檻並加速交付</li>
+                    </ul>
+
+                    <p class="font-bold text-base mt-4">美術製作與教學推廣</p>
+                    <ul class="list-disc ml-6 space-y-1 text-gray-800 font-light text-base">
+                        <li>具備完整的 2D／3D／動畫／UI／特效製作能力，能靈活支援各類專案並維持風格一致性</li>
+                        <li>主導內部 Unity 與 Blender 教學課程，依專案需求設計教材，協助成員迅速具備實裝能力</li>
+                    </ul>
+                </div>
+
+                <h6 class="font-bold text-lg mt-8 mb-2">參與專案</h6>
+                <!-- 使用 grid 排版 Projects 時間軸 -->
+                <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_3fr] gap-x-4 gap-y-1 text-sm ml-6 text-gray-800 font-light">
+                    <span class="font-light">Oct. 2022 - Jul. 2024</span><span class="font-normal">The Star Named EOS (Steam)</span>
+                    <span class="font-light">Aug. 2023 - Apr. 2024</span><span class="font-normal">Designer Creative Lab. (遊戲美術技術展示)</span>
+                    <span class="font-light">May. 2021 - Oct. 2021</span><span class="font-normal">The Wizard of Eggz (Mobile Game)</span>
+                    <span class="font-light">Jan. 2021 - May. 2021</span><span class="font-normal">Prisoner VS Jailer (Mobile Game)</span>
+                    <span class="font-light">Nov. 2020 - Jan. 2021</span><span class="font-normal">SML WONDER EXPO (實體展覽)</span>
+                    <span class="font-light">Aug. 2016 - Nov. 2020</span><span class="font-normal">ONE PIECE BON! BON! JOURNEY!! (Mobile Game)</span>
+                    <span class="font-light">Jan. 2016 - Dec. 2016</span><span class="font-normal">The Beaters (Mobile Game)</span>
+                </div>
+            </div>
+
+            <div class="mb-8 border-b border-gray-200 pb-8">
+                <h5 class="text-lg font-bold">XPEC Entertainment inc., Taipei, Taiwan</h5>
+                <p class="text-base">Senior Artist / 2D & UI Artist</p>
+                <p class="text-sm text-gray-500 mb-4">Jan. 2010 - May. 2015</p>
+                <ul class="list-disc ml-6 space-y-1 text-gray-800 font-light text-base">
+                    <li>參與手機與社群遊戲的2D ／ UI ／動畫製作，累積完整開發與 Unity 實裝經驗，並具 UI Flow 規劃與素材設計能力，為後續技術統整與流程建置奠定基礎。</li>
+                </ul>
+            </div>
+
+            <h4 class="text-xl font-bold uppercase tracking-wider mt-10 mb-4">EDUCATION</h4>
+            <div class="mb-8 border-b border-gray-200 pb-8">
+                <h5 class="text-lg font-bold">Fu Jen Catholic University, Taipei, Taiwan</h5>
+                <p class="text-base">Bachelor of Art, 2005 - 2009</p>
+            </div>
+
+            <h4 class="text-xl font-bold uppercase tracking-wider mt-10 mb-4">SKILLS</h4>
+            <div class="space-y-4 ml-0 md:ml-4">
+                <ul class="list-disc ml-6 space-y-1 text-gray-800 font-light text-base">
+                    <li>Engine Tools: <span class="font-normal">Unity, Github</span></li>
+                    <li>Design Softwares: <span class="font-normal">Blender, Photoshop, Illustrator</span></li>
+                    <li>Art & Design Skills: <span class="font-normal">2D Illustration, 3D Modeling, Texturing, Rigging, Animation, VFX, UI/UX Design</span></li>
+                    <li>Workflow Management: <span class="font-normal">Agile/Scrum, Kanban, Asset Pipeline Optimization, Outsourcing Coordination.</span></li>
+                </ul>
+            </div>
+        `;
+
+
+        const translations = {
+            'zh': {
+                'nav-home': 'home',
+                'nav-about': 'about', 
+                'nav-showcase': 'showcase',
+                'nav-projects': 'projects',
+                'sidebar-intro': 'Linda Huang | Senior Artist & Technical Generalist Artist', 
+                'title-showcase': 'SHOWCASE', 
+                'label-video': 'VIDEO SHOWREEL',
+                'label-portrait': 'PORTRAIT',
+                'label-interior': 'INTERIOR',
+                'label-decor': 'DECOR',
+                'title-about': 'ABOUT', 
+                'about-title': 'Linda Huang',
+                'about-subtitle': 'Senior Artist / Technical Generalist Artist',
+                'about-content-html': cvContentHTML_zh,
+                'title-projects': 'PROJECTS', 
+                'project-1-desc': 'The Star Named EOS is a story-rich puzzle adventure built around photography.',
+                'back-to-top': 'Top',
+            },
+            'en': {
+                'nav-home': 'home',
+                'nav-about': 'about',
+                'nav-showcase': 'showcase',
+                'nav-projects': 'projects',
+                'sidebar-intro': 'Linda Huang | Senior Artist & Technical Generalist Artist',
+                'title-showcase': 'SHOWCASE',
+                'label-video': 'VIDEO SHOWREEL',
+                'label-portrait': 'PORTRAIT',
+                'label-interior': 'INTERIOR',
+                'label-decor': 'DECOR',
+                'title-about': 'ABOUT',
+                'about-title': 'Linda Huang',
+                'about-subtitle': 'Senior Artist / Technical Generalist Artist',
+                'about-content-html': cvContentHTML_en,
+                'title-projects': 'PROJECTS',
+                'project-1-desc': 'The Star Named EOS is a story-rich puzzle adventure built around photography.',
+                'back-to-top': 'Top',
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    if (key === 'about-content-html') {
+                         el.innerHTML = translations[lang][key];
+                    } else {
+                         el.textContent = translations[lang][key];
+                    }
+                   
+                }
+            });
+
+            const btnZhSpan = document.querySelector('#btn-zh span');
+            const btnEnSpan = document.querySelector('#btn-en span');
+            
+            if (lang === 'zh') {
+                btnZhSpan.className = 'pb-1 text-black font-bold transition-all duration-300';
+                btnEnSpan.className = 'pb-1 text-gray-400 hover:text-black transition-all duration-300';
+            } else {
+                btnZhSpan.className = 'pb-1 text-gray-400 hover:text-black transition-all duration-300';
+                btnEnSpan.className = 'pb-1 text-black font-bold transition-all duration-300';
+            }
+        }
+
+        const mainContent = document.getElementById('main-content'); 
+        const sections = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        let currentPage = 'home'; 
+        
+        const isDesktop = () => window.innerWidth >= 768;
+
+        function showPage(pageId, clickedLink) {
+            currentPage = pageId;
+
+            if (pageId === 'home') {
+                mainContent.classList.remove('md:overflow-y-auto', 'custom-scroll');
+                mainContent.classList.add('overflow-hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mainContent.classList.add('md:overflow-y-auto', 'custom-scroll');
+                mainContent.classList.remove('overflow-hidden');
+                document.body.style.overflow = '';
+            }
+
+            navLinks.forEach(link => {
+                const span = link.querySelector('span');
+                
+                link.classList.remove('active-link');
+
+                if (span) {
+                     span.classList.remove('font-bold', 'font-normal'); 
+                     span.classList.add('font-normal'); 
+                }
+            });
+
+            if (clickedLink) {
+                const clickedSpan = clickedLink.querySelector('span');
+                
+                clickedLink.classList.add('active-link');
+                
+                if (clickedSpan) {
+                    clickedSpan.classList.remove('font-normal');
+                    clickedSpan.classList.add('font-bold');
+                }
+            }
+            
+            sections.forEach(section => {
+                if (section.id === pageId) {
+                    section.classList.remove('hidden');
+                    
+                    if (isDesktop()) {
+                        mainContent.scrollTop = 0; 
+                    } else {
+                        const offsetTop = mainContent.offsetTop;
+                        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    }
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+            
+            if (pageId !== 'projects') {
+                document.querySelectorAll('.project-content').forEach(openContent => {
+                    openContent.style.maxHeight = '0';
+                    openContent.classList.remove('is-open');
+
+                    const otherIcon = openContent.closest('.border-b')?.querySelector('svg'); 
+                    if (otherIcon) {
+                        otherIcon.classList.remove('rotate-45');
+                    }
+                });
+            }
+        }
+        
+        function toggleProject(projectId) {
+            const projectItem = document.getElementById(projectId);
+
+            if (!projectItem) {
+                console.error(`Error: Project element with ID ${projectId} not found.`);
+                return;
+            }
+            
+            const content = projectItem.querySelector('.project-content');
+            const icon = projectItem.querySelector('.border-b > button > svg'); 
+
+            if (!content || !icon) {
+                console.error(`Error: Missing content (.project-content) or icon (svg) for project ${projectId}.`);
+                return;
+            }
+            
+            const isCurrentlyOpen = content.classList.contains('is-open');
+            
+            document.querySelectorAll('.project-content.is-open').forEach(openContent => {
+                const parentItem = openContent.closest('.border-b');
+
+                if (parentItem && parentItem.id !== projectId) {
+                    openContent.style.maxHeight = '0';
+                    openContent.classList.remove('is-open');
+                    
+                    const otherIcon = parentItem.querySelector('.border-b > button > svg'); 
+                    if (otherIcon) {
+                        otherIcon.classList.remove('rotate-45');
+                    }
+                }
+            });
+
+            if (isCurrentlyOpen) {
+                content.style.maxHeight = '0';
+                content.classList.remove('is-open');
+                icon.classList.remove('rotate-45'); 
+            } else {
+                content.classList.add('is-open');
+                const scrollHeight = content.scrollHeight; 
+                content.style.maxHeight = scrollHeight + 'px'; 
+                icon.classList.add('rotate-45'); 
+            }
+            
+            setTimeout(() => {
+                if (isDesktop()) {
+                    mainContent.scrollTo({
+                        top: projectItem.offsetTop - 50, 
+                        behavior: 'smooth'
+                    });
+                } else {
+                    window.scrollTo({
+                        top: projectItem.offsetTop - 50,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 500); 
+        }
+
+        
+        window.onload = function() {
+            lucide.createIcons();
+            const initialLink = document.getElementById('nav-home');
+            if (initialLink) {
+                showPage('home', initialLink);
+            }
+            setLanguage('zh');
+        };
+
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxVideoWrapper = document.getElementById('lightbox-video-wrapper');
+        const lightboxIframe = document.getElementById('lightbox-iframe');
+
+        function openLightbox(source, type = 'image') {
+            lightbox.classList.remove('hidden');
+            
+            if (type === 'youtube') {
+                lightboxImg.classList.add('hidden');
+                lightboxVideoWrapper.classList.remove('hidden');
+                lightboxIframe.src = `https://www.youtube.com/embed/${source}?autoplay=1&playsinline=1&enablejsapi=1&origin=${location.origin}`;
+
+            } else {
+                lightboxVideoWrapper.classList.add('hidden');
+                lightboxImg.classList.remove('hidden');
+                lightboxImg.src = source;
+            }
+
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightboxImg.src = '';
+                lightboxIframe.src = '';
+            }, 300);
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.id === 'lightbox-content') {
+                closeLightbox();
+            }
+        });
+
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        let currentScrollListener = null;
+
+        const checkScroll = () => {
+            let scrollTopPosition;
+            const isDesk = isDesktop();
+            
+            if (isDesk) {
+                scrollTopPosition = mainContent.scrollTop;
+            } else {
+                const mainContentOffset = mainContent.offsetTop;
+                scrollTopPosition = window.scrollY - mainContentOffset + 500;
+            }
+
+            if (scrollTopPosition > 500) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            }
+            
+            backToTopBtn.classList.toggle('md:left-[24%]', isDesk);
+            backToTopBtn.classList.toggle('left-8', !isDesk);
+
+        };
+        
+        const setupScrollListener = () => {
+             if (currentScrollListener) {
+                 mainContent.removeEventListener('scroll', currentScrollListener);
+                 window.removeEventListener('scroll', currentScrollListener);
+             }
+             
+             if (isDesktop()) {
+                currentScrollListener = checkScroll;
+                mainContent.addEventListener('scroll', currentScrollListener);
+             } else {
+                currentScrollListener = checkScroll;
+                window.addEventListener('scroll', currentScrollListener);
+             }
+             checkScroll();
+        };
+
+        window.addEventListener('load', setupScrollListener);
+        window.addEventListener('resize', setupScrollListener);
+
+
+        function scrollToTop() {
+            backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+            
+            if (isDesktop()) {
+                mainContent.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
 </body>
 </html>
