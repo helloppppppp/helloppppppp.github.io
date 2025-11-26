@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/jpeg" href="https://ik.imagekit.io/l4vmfnvnev/icon_profile.jpg">
     
     <style>
         body {
@@ -159,10 +160,7 @@
                 
                 <section id="home" class="page-section flex flex-col pt-0 mb-20 h-[85vh]">
                     <div class="w-full h-full relative">
-                        <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/1600x900/E0E0E0/000000?text=Home+Visual';" 
-                             alt="[極簡主義建築圖片]" 
-                             class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                        <img src="https://placehold.co/1000x560/E0E0E0/000000?text=Portfolio of Linda Huang" onerror="this.onerror=null; this.src='https://placehold.co/800x450/000000/FFFFFF?text=Project+1+Placeholder';" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
                     </div>
                 </section>
 
@@ -338,6 +336,7 @@
 
                     <div class="space-y-0">
                         
+                        <!-- Project 1 -->
                         <div id="project-1" class="border-b border-gray-200 transition-all duration-300">
                             <button onclick="toggleProject('project-1')" class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
                                 <div class="flex-1">
@@ -350,26 +349,103 @@
                             <div class="project-content">
                                 <div class="pb-8 pt-4 space-y-6">
                                     <p class="text-gray-600 font-light max-w-2xl" data-i18n="project-1-desc">
-                                        https://store.steampowered.com/app/1619230/The_Star_Named_EOS/
-
                                         The Star Named EOS is a story-rich puzzle adventure built around photography.
-
-                                        Roles: Art pipeline planning, animation, VFX, asset optimization
-
-                                        Contributions:
-
-                                            • Defined overall art workflow and technical specifications
-
-                                            • Led animation and VFX design to support emotional storytelling
-
-                                            • Collaborated with programmers to improve runtime performance and project stability
                                     </p>
-                                    <div class="img-zoom-container aspect-video rounded-lg overflow-hidden bg-gray-100 shadow-lg cursor-pointer" onclick="openLightbox('https://placehold.co/1000x560/E0E0E0/000000?text=The Star Named EOS', 'image')">
-                                        <img src="https://placehold.co/1000x560/E0E0E0/000000?text=The Star Named EOS" onerror="this.onerror=null; this.src='https://placehold.co/800x450/000000/FFFFFF?text=Project+1+Placeholder';" alt="[The Star Named EOS]" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                    <div class="img-zoom-container aspect-video overflow-hidden bg-gray-100 cursor-pointer" onclick="openLightbox('https://placehold.co/1000x560/E0E0E0/000000?text=The Star Named EOS', 'image')">
+                                        <img src="https://placehold.co/1000x560/E0E0E0/000000?text=The Star Named EOS" onerror="this.onerror=null; this.src='https://placehold.co/800x450/000000/FFFFFF?text=The Star Named EOS';" alt="[The Star Named EOS]" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Project 2 -->
+                        <div id="project-2" class="border-b border-gray-200 transition-all duration-300">
+                            <button onclick="toggleProject('project-2')" class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">Designer Creative Lab.</h3>
+                                    <span class="font-sans text-sm text-gray-500 mt-2 block md:inline-block">2023/8 – 2024/4</span>
+                                </div>
+                                <i data-lucide="plus" class="w-7 h-7 text-gray-400 transform transition-transform duration-300 md:ml-6 mt-4 md:mt-0"></i>
+                            </button>
+                            
+                            <div class="project-content">
+                                <div class="pb-8 pt-4 space-y-6">
+                                    <p class="text-gray-600 font-light max-w-2xl" data-i18n="project-2-desc">
+                                        An art showcase blending cyberpunk with traditional Taiwanese folk beliefs.
+                                    </p>
+                                    <div class="img-zoom-container aspect-video overflow-hidden bg-gray-100 cursor-pointer" onclick="openLightbox('https://placehold.co/1000x560/E0E0E0/000000?text=Designer Creative Lab.', 'image')">
+                                        <img src="https://placehold.co/1000x560/E0E0E0/000000?text=Designer Creative Lab." onerror="this.onerror=null; this.src='https://placehold.co/800x450/000000/FFFFFF?text=Designer Creative Lab.';" alt="[Designer Creative Lab.]" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div id="project-3" class="border-b border-gray-200 transition-all duration-300">
+                            <button onclick="toggleProject('project-3')" class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">SML WONDER EXPO 2021</h3>
+                                    <span class="font-sans text-sm text-gray-500 mt-2 block md:inline-block">2020/11 – 2021/1</span>
+                                </div>
+                                <i data-lucide="plus" class="w-7 h-7 text-gray-400 transform transition-transform duration-300 md:ml-6 mt-4 md:mt-0"></i>
+                            </button>
+                            
+                            <div class="project-content">
+                                <div class="pb-8 pt-4 space-y-6">
+                                    <p class="text-gray-600 font-light max-w-2xl" data-i18n="project-3-desc">
+                                        A physical exhibition with interactive installations using real-time camera input.
+                                    </p>
+                                    <div class="img-zoom-container aspect-video overflow-hidden bg-gray-100 cursor-pointer" onclick="openLightbox('https://placehold.co/1000x560/E0E0E0/000000?text=The Star Named EOS', 'image')">
+                                        <img src="https://placehold.co/1000x560/E0E0E0/000000?text=SML WONDER EXPO 2021" onerror="this.onerror=null; this.src='https://placehold.co/800x450/000000/FFFFFF?text=SML WONDER EXPO 2021';" alt="[SML WONDER EXPO 2021]" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 -->
+                        <div id="project-4" class="border-b border-gray-200 transition-all duration-300">
+                            <button onclick="toggleProject('project-4')" class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">ONE PIECE BON! BON! JOURNEY!!</h3>
+                                    <span class="font-sans text-sm text-gray-500 mt-2 block md:inline-block">2016/8 – 2020/11</span>
+                                </div>
+                                <i data-lucide="plus" class="w-7 h-7 text-gray-400 transform transition-transform duration-300 md:ml-6 mt-4 md:mt-0"></i>
+                            </button>
+                            
+                            <div class="project-content">
+                                <div class="pb-8 pt-4 space-y-6">
+                                    <p class="text-gray-600 font-light max-w-2xl" data-i18n="project-4-desc">
+                                        A match-3 puzzle game featuring a popular IP.
+                                    </p>
+                                    <div class="img-zoom-container aspect-video overflow-hidden bg-gray-100 cursor-pointer" onclick="openLightbox('https://placehold.co/1000x560/E0E0E0/000000?text=ONE PIECE BON! BON! JOURNEY!!', 'image')">
+                                        <img src="https://placehold.co/1000x560/E0E0E0/000000?text=ONE PIECE BON! BON! JOURNEY!!" onerror="this.onerror=null; this.src='https://placehold.co/800x450/000000/FFFFFF?text=ONE PIECE BON! BON! JOURNEY!!';" alt="[ONE PIECE BON! BON! JOURNEY!!]" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 5 -->
+                        <div id="project-5" class="border-b border-gray-200 transition-all duration-300">
+                            <button onclick="toggleProject('project-5')" class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">The Beaters</h3>
+                                    <span class="font-sans text-sm text-gray-500 mt-2 block md:inline-block">2016/1 – 2016/12</span>
+                                </div>
+                                <i data-lucide="plus" class="w-7 h-7 text-gray-400 transform transition-transform duration-300 md:ml-6 mt-4 md:mt-0"></i>
+                            </button>
+                            
+                            <div class="project-content">
+                                <div class="pb-8 pt-4 space-y-6">
+                                    <p class="text-gray-600 font-light max-w-2xl" data-i18n="project-5-desc">
+                                        A rhythm-based game set in space, where players eliminate pairs of matching planets to the beat.
+                                    </p>
+                                    <div class="img-zoom-container aspect-video overflow-hidden bg-gray-100 cursor-pointer" onclick="openLightbox('https://placehold.co/1000x560/E0E0E0/000000?text=The Star Named EOS', 'image')">
+                                        <img src="https://placehold.co/1000x560/E0E0E0/000000?text=The Beaters" onerror="this.onerror=null; this.src='https://placehold.co/800x450/000000/FFFFFF?text=The Beaters';" alt="[The Beaters]" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </section>
 
@@ -552,6 +628,10 @@
                 'about-content-html': cvContentHTML_zh,
                 'title-projects': 'PROJECTS', 
                 'project-1-desc': 'The Star Named EOS is a story-rich puzzle adventure built around photography.',
+                'project-2-desc': 'An art showcase blending cyberpunk with traditional Taiwanese folk beliefs.',
+                'project-3-desc': 'A physical exhibition with interactive installations using real-time camera input.',
+                'project-4-desc': 'A match-3 puzzle game featuring a popular IP.',
+                'project-5-desc': 'A rhythm-based game set in space, where players eliminate pairs of matching planets to the beat.',
                 'back-to-top': 'Top',
             },
             'en': {
@@ -571,6 +651,10 @@
                 'about-content-html': cvContentHTML_en,
                 'title-projects': 'PROJECTS',
                 'project-1-desc': 'The Star Named EOS is a story-rich puzzle adventure built around photography.',
+                'project-2-desc': 'An art showcase blending cyberpunk with traditional Taiwanese folk beliefs.',
+                'project-3-desc': 'A physical exhibition with interactive installations using real-time camera input.',
+                'project-4-desc': 'A match-3 puzzle game featuring a popular IP.',
+                'project-5-desc': 'A rhythm-based game set in space, where players eliminate pairs of matching planets to the beat.',
                 'back-to-top': 'Top',
             }
         };
