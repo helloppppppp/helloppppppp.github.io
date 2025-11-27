@@ -190,11 +190,11 @@
 
                 <section id="home" class="page-section flex flex-col pt-0 h-[85vh] relative overflow-hidden">
                     <!-- Video Background -->
-                    <div class="absolute inset-0 pointer-events-none z-0 flex items-center justify-center bg-black">
-                        <div class="relative w-[900px] h-[506px] overflow-hidden">
+                    <div class="absolute inset-0 pointer-events-none z-0 bg-black">
+                        <div class="relative w-full h-full overflow-hidden">
                             <iframe id="home-video-player"
-                                class="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                                src="https://www.youtube.com/embed/TCqMqZ4k1aM?autoplay=1&mute=1&controls=0&loop=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+                                class="absolute top-1/2 left-1/2 w-full h-full min-w-[266.66vh] min-h-[84.38vw] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                                src="https://www.youtube.com/embed/cn-iTzdKybM?autoplay=1&mute=1&controls=0&loop=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
@@ -1221,10 +1221,10 @@
         window.addEventListener('resize', setupScrollListener);
 
         const showcaseVideos = [
-            'TCqMqZ4k1aM',
+            'cn-iTzdKybM',
             'K_anRVvkUMU',
             'iG443wevoq8',
-            'cn-iTzdKybM',
+            'TCqMqZ4k1aM',
             'fWT3caR9li4',
             'U5cHKg5jMiI',
         ];
@@ -1238,7 +1238,7 @@
             videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`;
         }
 
-        setInterval(rotateVideo, 5000);
+        setInterval(rotateVideo, 10000);
 
         function scrollToTop() {
             if (isDesktop()) {
