@@ -116,22 +116,22 @@
                     class="order-1 md:order-1 flex overflow-x-auto md:overflow-x-hidden whitespace-nowrap md:whitespace-normal space-x-2 py-2 md:border-none md:flex-col md:space-x-0 md:space-y-2 custom-scroll mt-4 md:mt-12">
                     <!-- Home -->
                     <a href="#" onclick="showPage('home', this)" id="nav-home"
-                        class="nav-link block text-xl md:text-2xl transition-all duration-300 hover:font-bold">
+                        class="nav-link inline text-xl md:text-2xl transition-all duration-300 hover:font-bold">
                         <span class="font-bold pb-1 tracking-tighter" data-i18n="nav-home">home</span>
                     </a>
                     <!-- About -->
                     <a href="#" onclick="showPage('about', this)" id="nav-about"
-                        class="nav-link block text-xl md:text-2xl transition-all duration-300 hover:font-bold">
+                        class="nav-link inline text-xl md:text-2xl transition-all duration-300 hover:font-bold">
                         <span class="font-normal pb-1 tracking-tighter" data-i18n="nav-about">about</span>
                     </a>
                     <!-- Showcase -->
                     <a href="#" onclick="showPage('showcase', this)" id="nav-showcase"
-                        class="nav-link block text-xl md:text-2xl transition-all duration-300 hover:font-bold">
+                        class="nav-link inline text-xl md:text-2xl transition-all duration-300 hover:font-bold">
                         <span class="font-normal pb-1 tracking-tighter" data-i18n="nav-showcase">showcase</span>
                     </a>
                     <!-- Projects -->
                     <a href="#" onclick="showPage('projects', this)" id="nav-projects"
-                        class="nav-link block text-xl md:text-2xl transition-all duration-300 hover:font-bold">
+                        class="nav-link inline text-xl md:text-2xl transition-all duration-300 hover:font-bold">
                         <span class="font-normal pb-1 tracking-tighter" data-i18n="nav-projects">projects</span>
                     </a>
                 </nav>
@@ -188,11 +188,25 @@
 
             <div class="max-w-6xl md:max-w-5xl mx-auto px-6 py-12 md:px-12 md:py-20 md:ml-5">
 
-                <section id="home" class="page-section flex flex-col pt-0">
-                    <div class="w-full h-full relative flex items-start md:items-center justify-center">
-                        <img src="https://placehold.co/1000x560/E0E0E0/000000?text=Portfolio of Linda Huang"
-                            onerror="this.onerror=null; this.src='https://placehold.co/800x450/000000/FFFFFF?text=Project+1+Placeholder';"
-                            class="w-full h-full object-contain md:object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                <section id="home" class="page-section flex flex-col pt-0 h-[85vh] relative overflow-hidden">
+                    <!-- Video Background -->
+                    <div class="absolute inset-0 pointer-events-none z-0">
+                        <iframe
+                            class="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                            src="https://www.youtube.com/embed/Y04orb0R_do?autoplay=1&mute=1&controls=0&loop=1&playlist=Y04orb0R_do&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Overlay to darken video slightly and prevent interaction -->
+                    <div class="absolute inset-0 bg-black/10 z-10 pointer-events-none"></div>
+
+                    <!-- Content Container -->
+                    <div class="relative z-20 w-full h-full flex items-center justify-center pointer-events-none">
+                        <!-- Add content here (e.g., title, logo) -->
+                    </div>
                 </section>
 
                 <!-- SHOWCASE -->
@@ -205,8 +219,8 @@
                             onclick="openLightbox('Y04orb0R_do', 'youtube')">
                             <img src="https://img.youtube.com/vi/Y04orb0R_do/maxresdefault.jpg"
                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Y04orb0R_do/hqdefault.jpg';"
-                                alt="[YouTube 影片封面圖]"
-                                class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                                alt="[EOS Animation & VFX Showcase: Train]"
+                                class="w-full h-full object-cover transition-all duration-500">
 
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div
@@ -215,9 +229,9 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans"
-                                data-i18n="label-video">
-                                VIDEO SHOWCASE
+                            <div
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                EOS Animation & VFX Showcase: Train
                             </div>
                         </div>
 
@@ -225,8 +239,8 @@
                             onclick="openLightbox('fWT3caR9li4', 'youtube')">
                             <img src="https://img.youtube.com/vi/fWT3caR9li4/maxresdefault.jpg"
                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/fWT3caR9li4/hqdefault.jpg';"
-                                alt="[YouTube 影片封面圖]"
-                                class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                                alt="[EOS Animation & VFX Showcase: Cemetery]"
+                                class="w-full h-full object-cover transition-all duration-500">
 
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div
@@ -235,9 +249,9 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans"
-                                data-i18n="label-video">
-                                VIDEO SHOWCASE
+                            <div
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                EOS Animation & VFX Showcase: Cemetery
                             </div>
                         </div>
 
@@ -245,8 +259,8 @@
                             onclick="openLightbox('iG443wevoq8', 'youtube')">
                             <img src="https://img.youtube.com/vi/iG443wevoq8/maxresdefault.jpg"
                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/iG443wevoq8/hqdefault.jpg';"
-                                alt="[YouTube 影片封面圖]"
-                                class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                                alt="[EOS Animation & VFX Showcase: Thunder Night]"
+                                class="w-full h-full object-cover transition-all duration-500">
 
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div
@@ -255,9 +269,9 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans"
-                                data-i18n="label-video">
-                                VIDEO SHOWCASE
+                            <div
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                EOS Animation & VFX Showcase: Thunder Night
                             </div>
                         </div>
 
@@ -265,8 +279,8 @@
                             onclick="openLightbox('OT6_Pa3Lco8', 'youtube')">
                             <img src="https://img.youtube.com/vi/OT6_Pa3Lco8/maxresdefault.jpg"
                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/OT6_Pa3Lco8/hqdefault.jpg';"
-                                alt="[YouTube 影片封面圖]"
-                                class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                                alt="[EOS Animation & VFX Showcase: Fantasy]"
+                                class="w-full h-full object-cover transition-all duration-500">
 
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div
@@ -275,9 +289,9 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans"
-                                data-i18n="label-video">
-                                VIDEO SHOWCASE
+                            <div
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                EOS Animation & VFX Showcase: Fantasy
                             </div>
                         </div>
 
@@ -285,8 +299,8 @@
                             onclick="openLightbox('3pLGqAOTWaY', 'youtube')">
                             <img src="https://img.youtube.com/vi/3pLGqAOTWaY/maxresdefault.jpg"
                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/3pLGqAOTWaY/hqdefault.jpg';"
-                                alt="[YouTube 影片封面圖]"
-                                class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                                alt="[EOS Animation & VFX Showcase: Starry Sky]"
+                                class="w-full h-full object-cover transition-all duration-500">
 
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div
@@ -295,9 +309,9 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans"
-                                data-i18n="label-video">
-                                VIDEO SHOWCASE
+                            <div
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                EOS Animation & VFX Showcase: Starry Sky
                             </div>
                         </div>
 
@@ -305,8 +319,8 @@
                             onclick="openLightbox('cn-iTzdKybM', 'youtube')">
                             <img src="https://img.youtube.com/vi/cn-iTzdKybM/maxresdefault.jpg"
                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/cn-iTzdKybM/hqdefault.jpg';"
-                                alt="[YouTube 影片封面圖]"
-                                class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                                alt="[DCL Animation & VFX Showcase: Part 5]"
+                                class="w-full h-full object-cover transition-all duration-500">
 
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div
@@ -315,9 +329,9 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans"
-                                data-i18n="label-video">
-                                VIDEO SHOWCASE
+                            <div
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                VDCL Animation & VFX Showcase: Part 5
                             </div>
                         </div>
 
@@ -325,8 +339,8 @@
                             onclick="openLightbox('K_anRVvkUMU', 'youtube')">
                             <img src="https://img.youtube.com/vi/K_anRVvkUMU/maxresdefault.jpg"
                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/K_anRVvkUMU/hqdefault.jpg';"
-                                alt="[YouTube 影片封面圖]"
-                                class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                                alt="[DCL Animation & VFX Showcase: Part 4]"
+                                class="w-full h-full object-cover transition-all duration-500">
 
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div
@@ -335,9 +349,9 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans"
-                                data-i18n="label-video">
-                                VIDEO SHOWCASE
+                            <div
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                DCL Animation & VFX Showcase: Part 4
                             </div>
                         </div>
 
@@ -345,8 +359,8 @@
                             onclick="openLightbox('U5cHKg5jMiI', 'youtube')">
                             <img src="https://img.youtube.com/vi/U5cHKg5jMiI/maxresdefault.jpg"
                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/U5cHKg5jMiI/hqdefault.jpg';"
-                                alt="[YouTube 影片封面圖]"
-                                class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                                alt="[DCL Animation & VFX Showcase: Part 3]"
+                                class="w-full h-full object-cover transition-all duration-500">
 
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div
@@ -355,9 +369,9 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans"
-                                data-i18n="label-video">
-                                VIDEO SHOWCASE
+                            <div
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                DCL Animation & VFX Showcase: Part 3
                             </div>
                         </div>
 
@@ -365,8 +379,8 @@
                             onclick="openLightbox('TCqMqZ4k1aM', 'youtube')">
                             <img src="https://img.youtube.com/vi/TCqMqZ4k1aM/maxresdefault.jpg"
                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/TCqMqZ4k1aM/hqdefault.jpg';"
-                                alt="[YouTube 影片封面圖]"
-                                class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                                alt="[DCL Animation & VFX Showcase: Part 2]"
+                                class="w-full h-full object-cover transition-all duration-500">
 
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div
@@ -375,9 +389,9 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans"
-                                data-i18n="label-video">
-                                VIDEO SHOWCASE
+                            <div
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                DCL Animation & VFX Showcase: Part 2
                             </div>
                         </div>
 
@@ -385,8 +399,8 @@
                             onclick="openLightbox('Wlbi6aNQtBc', 'youtube')">
                             <img src="https://img.youtube.com/vi/Wlbi6aNQtBc/maxresdefault.jpg"
                                 onerror="this.onerror=null; this.src='https://img.youtube.com/vi/Wlbi6aNQtBc/hqdefault.jpg';"
-                                alt="[YouTube 影片封面圖]"
-                                class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">
+                                alt="[DCL Animation & VFX Showcase: Part 1]"
+                                class="w-full h-full object-cover transition-all duration-500">
 
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div
@@ -395,9 +409,9 @@
                                 </div>
                             </div>
 
-                            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity font-sans"
-                                data-i18n="label-video">
-                                VIDEO SHOWCASE
+                            <div
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                DCL Animation & VFX Showcase: Part 1
                             </div>
                         </div>
 
@@ -436,7 +450,7 @@
                                 class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
                                 <div class="flex-1">
                                     <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">The Star Named EOS</h3>
-                                    <span class="font-sans text-sm text-gray-500 mt-2 block md:inline-block">Oct. 2022 –
+                                    <span class="text-sm text-gray-500 mt-2 block md:inline-block">Oct. 2022 –
                                         Jul. 2024</span>
                                 </div>
                                 <i data-lucide="plus"
@@ -454,13 +468,17 @@
                                         onclick="openLightbox('oDcaXGu1SM0', 'youtube')">
                                         <img src="https://img.youtube.com/vi/oDcaXGu1SM0/maxresdefault.jpg"
                                             alt="[The Star Named EOS]"
-                                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                            class="w-full h-full object-cover transition-all duration-500">
                                         <div
                                             class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                             <div
                                                 class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
                                                 <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
                                             </div>
+                                        </div>
+                                        <div
+                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                            The Star Named EOS
                                         </div>
                                     </div>
                                 </div>
@@ -474,7 +492,7 @@
                                 <div class="flex-1">
                                     <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">Designer Creative Lab.
                                     </h3>
-                                    <span class="font-sans text-sm text-gray-500 mt-2 block md:inline-block">Aug. 2023 –
+                                    <span class="text-sm text-gray-500 mt-2 block md:inline-block">Aug. 2023 –
                                         Apr. 2024</span>
                                 </div>
                                 <i data-lucide="plus"
@@ -488,10 +506,14 @@
                                         <p>An art showcase blending cyberpunk with traditional Taiwanese folk beliefs.
                                         </p>
                                     </div>
-                                    <div class="img-zoom-container aspect-video overflow-hidden bg-gray-100 cursor-pointer"
+                                    <div class="img-zoom-container aspect-video overflow-hidden bg-gray-100 cursor-pointer relative group"
                                         onclick="openLightbox('images/dcl_screenshot.jpg', 'image')">
                                         <img src="images/dcl_screenshot.jpg" alt="[Designer Creative Lab.]"
-                                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                            class="w-full h-full object-cover transition-all duration-500">
+                                        <div
+                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                            Designer Creative Lab.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -503,7 +525,7 @@
                                 class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
                                 <div class="flex-1">
                                     <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">SML WONDER EXPO 2021</h3>
-                                    <span class="font-sans text-sm text-gray-500 mt-2 block md:inline-block">Nov. 2020 –
+                                    <span class="text-sm text-gray-500 mt-2 block md:inline-block">Nov. 2020 –
                                         Jan. 2021</span>
                                 </div>
                                 <i data-lucide="plus"
@@ -521,13 +543,17 @@
                                         onclick="openLightbox('Gmdq6_vLTO0?start=140', 'youtube')">
                                         <img src="https://img.youtube.com/vi/Gmdq6_vLTO0/maxresdefault.jpg"
                                             alt="[SML WONDER EXPO 2021]"
-                                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                            class="w-full h-full object-cover transition-all duration-500">
                                         <div
                                             class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                             <div
                                                 class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
                                                 <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
                                             </div>
+                                        </div>
+                                        <div
+                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                            SML WONDER EXPO 2021
                                         </div>
                                     </div>
                                 </div>
@@ -541,7 +567,7 @@
                                 <div class="flex-1">
                                     <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">ONE PIECE BON! BON!
                                         JOURNEY!!</h3>
-                                    <span class="font-sans text-sm text-gray-500 mt-2 block md:inline-block">Aug. 2016 –
+                                    <span class="text-sm text-gray-500 mt-2 block md:inline-block">Aug. 2016 –
                                         Nov. 2020</span>
                                 </div>
                                 <i data-lucide="plus"
@@ -558,13 +584,17 @@
                                         onclick="openLightbox('8UH1ekEmvzw', 'youtube')">
                                         <img src="https://img.youtube.com/vi/8UH1ekEmvzw/maxresdefault.jpg"
                                             alt="[ONE PIECE BON! BON! JOURNEY!!]"
-                                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                            class="w-full h-full object-cover transition-all duration-500">
                                         <div
                                             class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                             <div
                                                 class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
                                                 <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
                                             </div>
+                                        </div>
+                                        <div
+                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                            ONE PIECE BON! BON! JOURNEY!!
                                         </div>
                                     </div>
                                 </div>
@@ -577,7 +607,7 @@
                                 class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
                                 <div class="flex-1">
                                     <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">The Beaters</h3>
-                                    <span class="font-sans text-sm text-gray-500 mt-2 block md:inline-block">Jan. 2016 –
+                                    <span class="text-sm text-gray-500 mt-2 block md:inline-block">Jan. 2016 –
                                         Dec. 2016</span>
                                 </div>
                                 <i data-lucide="plus"
@@ -595,13 +625,17 @@
                                         onclick="openLightbox('9q6ckArZBqU', 'youtube')">
                                         <img src="https://img.youtube.com/vi/9q6ckArZBqU/maxresdefault.jpg"
                                             alt="[The Beaters]"
-                                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                                            class="w-full h-full object-cover transition-all duration-500">
                                         <div
                                             class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                             <div
                                                 class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/50">
                                                 <i data-lucide="play" class="w-8 h-8 text-white fill-current ml-1"></i>
                                             </div>
+                                        </div>
+                                        <div
+                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                            The Beaters
                                         </div>
                                     </div>
                                 </div>
@@ -618,7 +652,7 @@
             <button onclick="scrollToTop()" id="backToTopBtn"
                 class="fixed bottom-8 left-8 md:left-[calc(24%-30px)] z-40 opacity-0 pointer-events-none transition-opacity duration-500 flex items-center space-x-2 text-black hover:opacity-70 group">
                 <img src="images/icons8-up-48.png" alt="Back to top" class="w-5 h-5">
-                <span class="text-xs tracking-widest uppercase hidden md:inline font-sans font-bold"
+                <span class="text-xs tracking-widest uppercase hidden md:inline font-bold"
                     data-i18n="back-to-top">Top</span>
             </button>
         </main>
@@ -637,7 +671,7 @@
             <div class="mb-8 pb-8">
                 <h5 class="text-lg font-bold">Akatsuki Taiwan Inc., Taipei, Taiwan</h5>
                 <p class="text-base font-normal">Lead Artist / Senior Artist / Technical Artist</p>
-                <p class="text-sm font-normal text-gray-500 mb-10">Dec 2015 - Aug 2025</p>
+                <p class="text-sm text-gray-500 mb-10">Dec. 2015 - Aug. 2025</p>
                 
                 <div class="space-y-4 ml-0 md:ml-4">
                     <p class="font-bold text-base">Team Management & Cross-Department Collaboration</p>
@@ -664,20 +698,20 @@
                 <h6 class="font-bold text-lg mt-8 mb-2">Projects:</h6>
 
                 <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_3fr] gap-x-4 gap-y-1 text-sm ml-6 text-gray-800 font-normal">
-                    <span class="font-normal">Oct. 2022 - Jul. 2024</span><span class="font-normal">The Star Named EOS (Steam/Multi-platform)</span>
-                    <span class="font-normal">Aug. 2023 - Apr. 2024</span><span class="font-normal">Designer Creative Lab. (Game Art Demo)</span>
-                    <span class="font-normal">May. 2021 - Oct. 2021</span><span class="font-normal">The Wizard of Eggz (Mobile Game)</span>
-                    <span class="font-normal">Jan. 2021 - May. 2021</span><span class="font-normal">Prisoner VS Jailer (Mobile Game)</span>
-                    <span class="font-normal">Nov. 2020 - Jan. 2021</span><span class="font-normal">SML WONDER EXPO (Physical Exhibition)</span>
-                    <span class="font-normal">Aug. 2016 - Nov. 2020</span><span class="font-normal">ONE PIECE BON! BON! JOURNEY!! (Mobile Game)</span>
-                    <span class="font-normal">Jan. 2016 - Dec. 2016</span><span class="font-normal">The Beaters (Mobile Game)</span>
+                    <span class="text-sm text-gray-500">Oct. 2022 - Jul. 2024</span><span class="font-normal">The Star Named EOS (Steam/Multi-platform)</span>
+                    <span class="text-sm text-gray-500">Aug. 2023 - Apr. 2024</span><span class="font-normal">Designer Creative Lab. (Game Art Demo)</span>
+                    <span class="text-sm text-gray-500">May. 2021 - Oct. 2021</span><span class="font-normal">The Wizard of Eggz (Mobile Game)</span>
+                    <span class="text-sm text-gray-500">Jan. 2021 - May. 2021</span><span class="font-normal">Prisoner VS Jailer (Mobile Game)</span>
+                    <span class="text-sm text-gray-500">Nov. 2020 - Jan. 2021</span><span class="font-normal">SML WONDER EXPO (Physical Exhibition)</span>
+                    <span class="text-sm text-gray-500">Aug. 2016 - Nov. 2020</span><span class="font-normal">ONE PIECE BON! BON! JOURNEY!! (Mobile Game)</span>
+                    <span class="text-sm text-gray-500">Jan. 2016 - Dec. 2016</span><span class="font-normal">The Beaters (Mobile Game)</span>
                 </div>
             </div>
 
             <div class="mb-8 pb-8">
                 <h5 class="text-lg font-bold">XPEC Entertainment inc., Taipei, Taiwan</h5>
                 <p class="text-base font-normal">Senior Artist / 2D & UI Artist</p>
-                <p class="text-sm font-normal text-gray-500 mb-4">Jan. 2010 - May. 2015</p>
+                <p class="text-sm text-gray-500 mb-4">Jan. 2010 - May. 2015</p>
                 <ul class="list-disc ml-6 space-y-1 mb-6 font-normal">
                     <li>Contributed to mobile and social game development with a focus on 2D asset creation, UI/UX design, and animation.</li>
                     <li>Built a foundation in pipeline design through UI flow planning and Unity implementation.</li>
@@ -710,7 +744,7 @@
             <div class="mb-8 pb-8">
                 <h5 class="text-lg font-bold">Akatsuki Taiwan Inc., Taipei, Taiwan</h5>
                 <p class="text-base font-normal">Lead Artist / Senior Artist / Technical Artist</p>
-                <p class="text-sm font-normal text-gray-500 mb-10">Dec 2015 - Aug 2025</p>
+                <p class="text-sm text-gray-500 mb-10">Dec. 2015 - Aug. 2025</p>
                 
                 <div class="space-y-4 ml-0 md:ml-4">
                     <p class="font-bold text-base">團隊管理與跨部門協作</p>
@@ -736,20 +770,20 @@
 
                 <h6 class="font-bold text-lg mt-8 mb-2">參與專案</h6>
                 <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_3fr] gap-x-4 gap-y-1 text-sm ml-6 font-normal">
-                    <span class="font-normal">Oct. 2022 - Jul. 2024</span><span class="font-normal">The Star Named EOS (Steam/多平台)</span>
-                    <span class="font-normal">Aug. 2023 - Apr. 2024</span><span class="font-normal">Designer Creative Lab. (遊戲美術技術展示)</span>
-                    <span class="font-normal">May. 2021 - Oct. 2021</span><span class="font-normal">The Wizard of Eggz (移動平台)</span>
-                    <span class="font-normal">Jan. 2021 - May. 2021</span><span class="font-normal">Prisoner VS Jailer (移動平台)</span>
-                    <span class="font-normal">Nov. 2020 - Jan. 2021</span><span class="font-normal">SML WONDER EXPO (實體展覽)</span>
-                    <span class="font-normal">Aug. 2016 - Nov. 2020</span><span class="font-normal">ONE PIECE BON! BON! JOURNEY!! (移動平台)</span>
-                    <span class="font-normal">Jan. 2016 - Dec. 2016</span><span class="font-normal">The Beaters (移動平台)</span>
+                    <span class="text-sm text-gray-500">Oct. 2022 - Jul. 2024</span><span class="font-normal">The Star Named EOS (Steam/多平台)</span>
+                    <span class="text-sm text-gray-500">Aug. 2023 - Apr. 2024</span><span class="font-normal">Designer Creative Lab. (遊戲美術技術展示)</span>
+                    <span class="text-sm text-gray-500">May. 2021 - Oct. 2021</span><span class="font-normal">The Wizard of Eggz (移動平台)</span>
+                    <span class="text-sm text-gray-500">Jan. 2021 - May. 2021</span><span class="font-normal">Prisoner VS Jailer (移動平台)</span>
+                    <span class="text-sm text-gray-500">Nov. 2020 - Jan. 2021</span><span class="font-normal">SML WONDER EXPO (實體展覽)</span>
+                    <span class="text-sm text-gray-500">Aug. 2016 - Nov. 2020</span><span class="font-normal">ONE PIECE BON! BON! JOURNEY!! (移動平台)</span>
+                    <span class="text-sm text-gray-500">Jan. 2016 - Dec. 2016</span><span class="font-normal">The Beaters (移動平台)</span>
                 </div>
             </div>
 
             <div class="mb-8 pb-8">
                 <h5 class="text-lg font-bold">XPEC Entertainment inc., Taipei, Taiwan</h5>
                 <p class="text-base font-normal">Senior Artist / 2D & UI Artist</p>
-                <p class="text-sm font-normal text-gray-500 mb-4">Jan. 2010 - May. 2015</p>
+                <p class="text-sm text-gray-500 mb-4">Jan. 2010 - May. 2015</p>
                 <ul class="list-disc ml-6 space-y-1 mb-6 font-normal">
                     <li>參與手機與社群遊戲的2D ／ UI ／動畫製作，累積完整開發與 Unity 實裝經驗，並具 UI Flow 規劃與素材設計能力，為後續技術統整與流程建置奠定基礎。</li>
                 </ul>
