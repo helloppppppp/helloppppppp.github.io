@@ -162,7 +162,7 @@
                 <div class="hidden md:block order-3 mt-10 text-center md:text-left">
                     <p class="text-xs font-light text-gray-500 leading-relaxed max-w-[200px] mx-auto md:mx-0"
                         data-i18n="sidebar-intro">
-                        Linda Huang · Senior Artist & Technical Generalist Artist
+                        Linda Huang, Senior Artist & Technical Generalist Artist
                     </p>
                 </div>
             </div>
@@ -190,22 +190,16 @@
 
                 <section id="home" class="page-section flex flex-col pt-0 h-[85vh] relative overflow-hidden">
                     <!-- Video Background -->
-                    <div class="absolute inset-0 pointer-events-none z-0">
-                        <iframe
-                            class="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                            src="https://www.youtube.com/embed/Y04orb0R_do?autoplay=1&mute=1&controls=0&loop=1&playlist=Y04orb0R_do&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-
-                    <!-- Overlay to darken video slightly and prevent interaction -->
-                    <div class="absolute inset-0 bg-black/10 z-10 pointer-events-none"></div>
-
-                    <!-- Content Container -->
-                    <div class="relative z-20 w-full h-full flex items-center justify-center pointer-events-none">
-                        <!-- Add content here (e.g., title, logo) -->
+                    <div class="absolute inset-0 pointer-events-none z-0 flex items-center justify-center bg-black">
+                        <div class="relative w-[900px] h-[506px] overflow-hidden">
+                            <iframe id="home-video-player"
+                                class="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                                src="https://www.youtube.com/embed/TCqMqZ4k1aM?autoplay=1&mute=1&controls=0&loop=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
                 </section>
 
@@ -450,7 +444,7 @@
                                 class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
                                 <div class="flex-1">
                                     <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">The Star Named EOS</h3>
-                                    <span class="text-sm text-gray-500 mt-2 block md:inline-block">Oct. 2022 –
+                                    <span class="text-gray-500 mt-2 block md:inline-block">Oct. 2022 –
                                         Jul. 2024</span>
                                 </div>
                                 <i data-lucide="plus"
@@ -492,7 +486,7 @@
                                 <div class="flex-1">
                                     <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">Designer Creative Lab.
                                     </h3>
-                                    <span class="text-sm text-gray-500 mt-2 block md:inline-block">Aug. 2023 –
+                                    <span class="text-gray-500 mt-2 block md:inline-block">Aug. 2023 –
                                         Apr. 2024</span>
                                 </div>
                                 <i data-lucide="plus"
@@ -525,7 +519,7 @@
                                 class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
                                 <div class="flex-1">
                                     <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">SML WONDER EXPO 2021</h3>
-                                    <span class="text-sm text-gray-500 mt-2 block md:inline-block">Nov. 2020 –
+                                    <span class="text-gray-500 mt-2 block md:inline-block">Nov. 2020 –
                                         Jan. 2021</span>
                                 </div>
                                 <i data-lucide="plus"
@@ -567,7 +561,7 @@
                                 <div class="flex-1">
                                     <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">ONE PIECE BON! BON!
                                         JOURNEY!!</h3>
-                                    <span class="text-sm text-gray-500 mt-2 block md:inline-block">Aug. 2016 –
+                                    <span class="text-gray-500 mt-2 block md:inline-block">Aug. 2016 –
                                         Nov. 2020</span>
                                 </div>
                                 <i data-lucide="plus"
@@ -607,7 +601,7 @@
                                 class="w-full text-left py-6 flex flex-col md:flex-row md:items-center justify-between group hover:border-black">
                                 <div class="flex-1">
                                     <h3 class="text-2xl md:text-3xl group-hover:text-gray-800">The Beaters</h3>
-                                    <span class="text-sm text-gray-500 mt-2 block md:inline-block">Jan. 2016 –
+                                    <span class="text-gray-500 mt-2 block md:inline-block">Jan. 2016 –
                                         Dec. 2016</span>
                                 </div>
                                 <i data-lucide="plus"
@@ -671,7 +665,7 @@
             <div class="mb-8 pb-8">
                 <h5 class="text-lg font-bold">Akatsuki Taiwan Inc., Taipei, Taiwan</h5>
                 <p class="text-base font-normal">Lead Artist / Senior Artist / Technical Artist</p>
-                <p class="text-sm text-gray-500 mb-10">Dec. 2015 - Aug. 2025</p>
+                <p class="text-gray-500 text-base font-normal mb-10">Dec. 2015 - Aug. 2025</p>
                 
                 <div class="space-y-4 ml-0 md:ml-4">
                     <p class="font-bold text-base">Team Management & Cross-Department Collaboration</p>
@@ -697,21 +691,21 @@
 
                 <h6 class="font-bold text-lg mt-8 mb-2">Projects:</h6>
 
-                <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_3fr] gap-x-4 gap-y-1 text-sm ml-6 text-gray-800 font-normal">
-                    <span class="text-sm text-gray-500">Oct. 2022 - Jul. 2024</span><span class="font-normal">The Star Named EOS (Steam/Multi-platform)</span>
-                    <span class="text-sm text-gray-500">Aug. 2023 - Apr. 2024</span><span class="font-normal">Designer Creative Lab. (Game Art Demo)</span>
-                    <span class="text-sm text-gray-500">May. 2021 - Oct. 2021</span><span class="font-normal">The Wizard of Eggz (Mobile Game)</span>
-                    <span class="text-sm text-gray-500">Jan. 2021 - May. 2021</span><span class="font-normal">Prisoner VS Jailer (Mobile Game)</span>
-                    <span class="text-sm text-gray-500">Nov. 2020 - Jan. 2021</span><span class="font-normal">SML WONDER EXPO (Physical Exhibition)</span>
-                    <span class="text-sm text-gray-500">Aug. 2016 - Nov. 2020</span><span class="font-normal">ONE PIECE BON! BON! JOURNEY!! (Mobile Game)</span>
-                    <span class="text-sm text-gray-500">Jan. 2016 - Dec. 2016</span><span class="font-normal">The Beaters (Mobile Game)</span>
+                <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_3fr] gap-x-4 gap-y-1 ml-6 text-gray-800 font-normal">
+                    <span class="text-gray-500">Oct. 2022 - Jul. 2024</span><span class="font-normal">The Star Named EOS (Steam/Multi-platform)</span>
+                    <span class="text-gray-500">Aug. 2023 - Apr. 2024</span><span class="font-normal">Designer Creative Lab. (Game Art Demo)</span>
+                    <span class="text-gray-500">May. 2021 - Oct. 2021</span><span class="font-normal">The Wizard of Eggz (Mobile Game)</span>
+                    <span class="text-gray-500">Jan. 2021 - May. 2021</span><span class="font-normal">Prisoner VS Jailer (Mobile Game)</span>
+                    <span class="text-gray-500">Nov. 2020 - Jan. 2021</span><span class="font-normal">SML WONDER EXPO (Physical Exhibition)</span>
+                    <span class="text-gray-500">Aug. 2016 - Nov. 2020</span><span class="font-normal">ONE PIECE BON! BON! JOURNEY!! (Mobile Game)</span>
+                    <span class="text-gray-500">Jan. 2016 - Dec. 2016</span><span class="font-normal">The Beaters (Mobile Game)</span>
                 </div>
             </div>
 
             <div class="mb-8 pb-8">
                 <h5 class="text-lg font-bold">XPEC Entertainment inc., Taipei, Taiwan</h5>
                 <p class="text-base font-normal">Senior Artist / 2D & UI Artist</p>
-                <p class="text-sm text-gray-500 mb-4">Jan. 2010 - May. 2015</p>
+                <p class="text-gray-500 text-base font-normal mb-4">Jan. 2010 - May. 2015</p>
                 <ul class="list-disc ml-6 space-y-1 mb-6 font-normal">
                     <li>Contributed to mobile and social game development with a focus on 2D asset creation, UI/UX design, and animation.</li>
                     <li>Built a foundation in pipeline design through UI flow planning and Unity implementation.</li>
@@ -727,10 +721,10 @@
             <h4 class="text-xl font-bold uppercase mt-10 mb-4">SKILLS</h4>
             <div class="space-y-4 ml-0 md:ml-4">
                 <ul class="list-disc ml-6 space-y-1 mb-6 font-normal">
-                    <li>Engine Tools: <span class="font-normal">Unity</span></li>
+                    <li>Engine Tools: <span class="font-normal">Unity, Unreal</span></li>
                     <li>Design Softwares: <span class="font-normal">Blender, Photoshop, Illustrator</span></li>
                     <li>Art & Design Skills: <span class="font-normal">2D Illustration, 3D Modeling, Texturing, Rigging, Animation, VFX, UI Design</span></li>
-                    <li>Workflow Management: <span class="font-normal">Agile/Scrum, Kanban, Asset Pipeline Optimization, Outsourcing Coordination.</span></li>
+                    <li>Workflow Management: <span class="font-normal">Agile/Scrum, Kanban, Asset Pipeline Optimization, Outsourcing Coordination</span></li>
                 </ul>
             </div>
         `;
@@ -744,13 +738,13 @@
             <div class="mb-8 pb-8">
                 <h5 class="text-lg font-bold">Akatsuki Taiwan Inc., Taipei, Taiwan</h5>
                 <p class="text-base font-normal">Lead Artist / Senior Artist / Technical Artist</p>
-                <p class="text-sm text-gray-500 mb-10">Dec. 2015 - Aug. 2025</p>
+                <p class="text-gray-500 text-base font-normal mb-10">Dec. 2015 - Aug. 2025</p>
                 
                 <div class="space-y-4 ml-0 md:ml-4">
                     <p class="font-bold text-base">團隊管理與跨部門協作</p>
                     <ul class="list-disc ml-6 space-y-1 mb-6 font-normal">
                         <li>帶領 10 人美術團隊參與專案開發，設計並優化美術資源製程，提升效率並顯著降低 bug 回報率</li>
-                        <li>負責與企劃、工程等部門溝通，確保團隊穩定輸出</li>
+                        <li>負責與企劃、程式等部門溝通，確保團隊穩定輸出</li>
                         <li>具專案與外包管理經驗，擔任溝通窗口，負責時程追蹤與品質控管，確保項目如期如質完成</li>
                     </ul>
 
@@ -769,21 +763,21 @@
                 </div>
 
                 <h6 class="font-bold text-lg mt-8 mb-2">參與專案</h6>
-                <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_3fr] gap-x-4 gap-y-1 text-sm ml-6 font-normal">
-                    <span class="text-sm text-gray-500">Oct. 2022 - Jul. 2024</span><span class="font-normal">The Star Named EOS (Steam/多平台)</span>
-                    <span class="text-sm text-gray-500">Aug. 2023 - Apr. 2024</span><span class="font-normal">Designer Creative Lab. (遊戲美術技術展示)</span>
-                    <span class="text-sm text-gray-500">May. 2021 - Oct. 2021</span><span class="font-normal">The Wizard of Eggz (移動平台)</span>
-                    <span class="text-sm text-gray-500">Jan. 2021 - May. 2021</span><span class="font-normal">Prisoner VS Jailer (移動平台)</span>
-                    <span class="text-sm text-gray-500">Nov. 2020 - Jan. 2021</span><span class="font-normal">SML WONDER EXPO (實體展覽)</span>
-                    <span class="text-sm text-gray-500">Aug. 2016 - Nov. 2020</span><span class="font-normal">ONE PIECE BON! BON! JOURNEY!! (移動平台)</span>
-                    <span class="text-sm text-gray-500">Jan. 2016 - Dec. 2016</span><span class="font-normal">The Beaters (移動平台)</span>
+                <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_3fr] gap-x-4 gap-y-1 ml-6 font-normal">
+                    <span class="text-gray-500">Oct. 2022 - Jul. 2024</span><span class="font-normal">The Star Named EOS (Steam/多平台)</span>
+                    <span class="text-gray-500">Aug. 2023 - Apr. 2024</span><span class="font-normal">Designer Creative Lab. (遊戲美術技術展示)</span>
+                    <span class="text-gray-500">May. 2021 - Oct. 2021</span><span class="font-normal">The Wizard of Eggz (移動平台)</span>
+                    <span class="text-gray-500">Jan. 2021 - May. 2021</span><span class="font-normal">Prisoner VS Jailer (移動平台)</span>
+                    <span class="text-gray-500">Nov. 2020 - Jan. 2021</span><span class="font-normal">SML WONDER EXPO (實體展覽)</span>
+                    <span class="text-gray-500">Aug. 2016 - Nov. 2020</span><span class="font-normal">ONE PIECE BON! BON! JOURNEY!! (移動平台)</span>
+                    <span class="text-gray-500">Jan. 2016 - Dec. 2016</span><span class="font-normal">The Beaters (移動平台)</span>
                 </div>
             </div>
 
             <div class="mb-8 pb-8">
                 <h5 class="text-lg font-bold">XPEC Entertainment inc., Taipei, Taiwan</h5>
                 <p class="text-base font-normal">Senior Artist / 2D & UI Artist</p>
-                <p class="text-sm text-gray-500 mb-4">Jan. 2010 - May. 2015</p>
+                <p class="text-gray-500 text-base font-normal mb-4">Jan. 2010 - May. 2015</p>
                 <ul class="list-disc ml-6 space-y-1 mb-6 font-normal">
                     <li>參與手機與社群遊戲的2D ／ UI ／動畫製作，累積完整開發與 Unity 實裝經驗，並具 UI Flow 規劃與素材設計能力，為後續技術統整與流程建置奠定基礎。</li>
                 </ul>
@@ -798,10 +792,10 @@
             <h4 class="text-xl font-bold uppercase mt-10 mb-4">SKILLS</h4>
             <div class="space-y-4 ml-0 md:ml-4">
                 <ul class="list-disc ml-6 space-y-1 mb-6 font-normal">
-                    <li>遊戲引擎：<span class="font-normal">Unity</span></li>
+                    <li>遊戲引擎：<span class="font-normal">Unity, Unreal</span></li>
                     <li>軟體：<span class="font-normal">Blender, Photoshop, Illustrator</span></li>
                     <li>美術 & 設計技能：<span class="font-normal">2D Illustration, 3D Modeling, Texturing, Rigging, Animation, VFX, UI Design</span></li>
-                    <li>工程流程管理：<span class="font-normal">Agile/Scrum, Kanban, Asset Pipeline Optimization, Outsourcing Coordination.</span></li>
+                    <li>工作流程管理：<span class="font-normal">Agile/Scrum, Kanban, Asset Pipeline Optimization, Outsourcing Coordination</span></li>
                 </ul>
             </div>
         `;
@@ -813,7 +807,7 @@
                 'nav-about': 'about',
                 'nav-showcase': 'showcase',
                 'nav-projects': 'projects',
-                'sidebar-intro': 'Linda Huang · Senior Artist & Technical Generalist Artist',
+                'sidebar-intro': 'Linda Huang, Senior Artist & Technical Generalist Artist',
                 'title-showcase': 'SHOWCASE',
                 'label-video': 'VIDEO SHOWCASE',
                 'label-portrait': 'PORTRAIT',
@@ -898,7 +892,7 @@
                 'nav-about': 'about',
                 'nav-showcase': 'showcase',
                 'nav-projects': 'projects',
-                'sidebar-intro': 'Linda Huang · Senior Artist & Technical Generalist Artist',
+                'sidebar-intro': 'Linda Huang, Senior Artist & Technical Generalist Artist',
                 'title-showcase': 'SHOWCASE',
                 'label-video': 'VIDEO SHOWCASE',
                 'label-portrait': 'PORTRAIT',
@@ -1226,6 +1220,25 @@
         window.addEventListener('load', setupScrollListener);
         window.addEventListener('resize', setupScrollListener);
 
+        const showcaseVideos = [
+            'TCqMqZ4k1aM',
+            'K_anRVvkUMU',
+            'iG443wevoq8',
+            'cn-iTzdKybM',
+            'fWT3caR9li4',
+            'U5cHKg5jMiI',
+        ];
+
+        let currentVideoIndex = 0;
+        const videoPlayer = document.getElementById('home-video-player');
+
+        function rotateVideo() {
+            currentVideoIndex = (currentVideoIndex + 1) % showcaseVideos.length;
+            const videoId = showcaseVideos[currentVideoIndex];
+            videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`;
+        }
+
+        setInterval(rotateVideo, 5000);
 
         function scrollToTop() {
             if (isDesktop()) {
