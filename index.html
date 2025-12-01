@@ -49,12 +49,12 @@
             transition: transform 0.5s ease, filter 0.5s ease;
         }
 
-        .img-zoom-container:hover img {
-            transform: scale(1.03);
-            filter: grayscale(0%);
+        @media (min-width: 768px) {
+            .img-zoom-container:hover img {
+                transform: scale(1.03);
+                filter: grayscale(0%);
+            }
         }
-
-        .active-link .link-border {}
 
         .project-content {
             max-height: 0;
@@ -71,12 +71,126 @@
         #cv-content-container ul li {
             margin-bottom: 0.25rem;
         }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            z-index: 51;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body class="text-black bg-white selection:bg-black selection:text-white">
 
-    <div class="fixed top-6 right-6 z-40 flex items-center space-x-2 text-xs tracking-widest font-sans">
+    <!-- Mobile Header -->
+    <div class="fixed top-6 right-6 z-40 md:hidden flex items-center space-x-4">
+        <div class="flex items-center space-x-2 text-sm tracking-widest font-sans">
+            <button onclick="setLanguage('zh')" id="mobile-btn-zh" class="group transition-colors focus:outline-none">
+                <span class="pb-1 text-black font-bold transition-all duration-300">繁中</span>
+            </button>
+            <button onclick="setLanguage('en')" id="mobile-btn-en" class="group transition-colors focus:outline-none">
+                <span class="pb-1 text-gray-400 hover:text-black transition-all duration-300">EN</span>
+            </button>
+        </div>
+
+        <button onclick="toggleMobileMenu()" class="p-2 focus:outline-none">
+            <i data-lucide="menu" class="w-8 h-8 text-black"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden" onclick="closeMobileMenu(event)">
+        <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+            <div class="relative flex flex-col h-full justify-start items-center px-8 pt-[15vh]">
+
+                <button onclick="closeMobileMenuDirect()" class="absolute top-6 right-6 p-2 focus:outline-none">
+                    <i data-lucide="x" class="w-8 h-8 text-black"></i>
+                </button>
+
+                <nav class="flex flex-col space-y-2 text-center">
+                    <a href="#" onclick="showPage('home', this); closeMobileMenuDirect();" id="mobile-nav-home"
+                        class="nav-link text-2xl transition-all duration-300 hover:font-bold">
+                        <span class="font-bold pb-1 tracking-tighter" data-i18n="nav-home">home</span>
+                    </a>
+                    <a href="#" onclick="showPage('about', this); closeMobileMenuDirect();" id="mobile-nav-about"
+                        class="nav-link text-2xl transition-all duration-300 hover:font-bold">
+                        <span class="font-normal pb-1 tracking-tighter" data-i18n="nav-about">about</span>
+                    </a>
+                    <a href="#" onclick="showPage('showcase', this); closeMobileMenuDirect();" id="mobile-nav-showcase"
+                        class="nav-link text-2xl transition-all duration-300 hover:font-bold">
+                        <span class="font-normal pb-1 tracking-tighter" data-i18n="nav-showcase">showcase</span>
+                    </a>
+                    <a href="#" onclick="showPage('projects', this); closeMobileMenuDirect();" id="mobile-nav-projects"
+                        class="nav-link text-2xl transition-all duration-300 hover:font-bold">
+                        <span class="font-normal pb-1 tracking-tighter" data-i18n="nav-projects">projects</span>
+                    </a>
+                </nav>
+
+                <div class="flex justify-center space-x-2 mt-10">
+                    <a href="https://linktr.ee/lindahuangart" target="_blank"
+                        class="text-gray-400 hover:text-black transition-colors duration-300 block w-5 h-5">
+                        <img src="images/icons8-tree-48.png" alt="Linktree"
+                            class="w-full h-full object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
+                    </a>
+                    <a href="https://www.linkedin.com/in/linda-huang-4a4652ba" target="_blank"
+                        class="text-gray-400 hover:text-black transition-colors duration-300 block w-5 h-5">
+                        <img src="images/icons8-linkedin-48.png" alt="LinkedIn"
+                            class="w-full h-full object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
+                    </a>
+                    <a href="https://x.com/_linda_huang" target="_blank"
+                        class="text-gray-400 hover:text-black transition-colors duration-300 block w-5 h-5">
+                        <img src="images/icons8-twitter-48.png" alt="Twitter"
+                            class="w-full h-full object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
+                    </a>
+                    <a href="mailto:linda.helloppppppp@gmail.com"
+                        class="text-gray-400 hover:text-black transition-colors duration-300 block w-5 h-5">
+                        <img src="images/icons8-email-48.png" alt="Email"
+                            class="w-full h-full object-contain opacity-50 hover:opacity-100 transition-opacity duration-300">
+                    </a>
+                </div>
+
+                <div class="mt-10 text-center">
+                    <p class="text-xs font-light text-gray-500 leading-relaxed max-w-[200px] mx-auto"
+                        data-i18n="sidebar-intro">
+                        Linda Huang, Senior Artist & Technical Generalist Artist
+                    </p>
+                </div>
+
+                <div class="text-gray-400 mt-10 text-center">
+                    <p class="copyright-text" data-i18n="copyright-line1">&copy; 2025 Linda Huang. Icons by <a
+                            href="https://icons8.com/" target="_blank" class="underline">Icons8</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden md:flex fixed top-6 right-6 z-40 items-center space-x-2 text-xs tracking-widest font-sans">
         <button onclick="setLanguage('zh')" id="btn-zh" class="group transition-colors focus:outline-none">
             <span class="pb-1 text-black font-bold transition-all duration-300">繁中</span>
         </button>
@@ -108,7 +222,7 @@
     <div class="flex flex-col md:flex-row min-h-screen">
 
         <aside
-            class="w-full md:w-[22%] bg-white md:border-b-0 flex flex-col p-4 md:pt-8 md:pr-8 md:pb-8 md:pl-12 z-20 relative">
+            class="hidden md:flex w-full md:w-[22%] bg-white md:border-b-0 flex-col p-4 md:pt-8 md:pr-8 md:pb-8 md:pl-12 z-20 relative">
 
             <div class="flex-1 flex flex-col justify-start">
 
@@ -186,7 +300,7 @@
                 }
             </style>
 
-            <div class="max-w-6xl md:max-w-5xl mx-auto px-6 py-12 md:px-12 md:py-20 md:ml-5">
+            <div class="max-w-6xl md:max-w-5xl mx-auto px-6 pt-28 pb-12 md:px-12 md:py-20 md:ml-5">
 
                 <section id="home" class="page-section flex flex-col pt-0 h-[85vh] relative overflow-hidden">
                     <!-- Video Background -->
@@ -224,7 +338,7 @@
                             </div>
 
                             <div
-                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                 EOS Animation & VFX Showcase: Train
                             </div>
                         </div>
@@ -244,7 +358,7 @@
                             </div>
 
                             <div
-                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                 EOS Animation & VFX Showcase: Cemetery
                             </div>
                         </div>
@@ -264,7 +378,7 @@
                             </div>
 
                             <div
-                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                 EOS Animation & VFX Showcase: Thunder Night
                             </div>
                         </div>
@@ -284,7 +398,7 @@
                             </div>
 
                             <div
-                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                 EOS Animation & VFX Showcase: Fantasy
                             </div>
                         </div>
@@ -304,7 +418,7 @@
                             </div>
 
                             <div
-                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                 EOS Animation & VFX Showcase: Starry Sky
                             </div>
                         </div>
@@ -324,7 +438,7 @@
                             </div>
 
                             <div
-                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                 VDCL Animation & VFX Showcase: Part 5
                             </div>
                         </div>
@@ -344,7 +458,7 @@
                             </div>
 
                             <div
-                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                 DCL Animation & VFX Showcase: Part 4
                             </div>
                         </div>
@@ -364,7 +478,7 @@
                             </div>
 
                             <div
-                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                 DCL Animation & VFX Showcase: Part 3
                             </div>
                         </div>
@@ -384,7 +498,7 @@
                             </div>
 
                             <div
-                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                 DCL Animation & VFX Showcase: Part 2
                             </div>
                         </div>
@@ -404,7 +518,7 @@
                             </div>
 
                             <div
-                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                 DCL Animation & VFX Showcase: Part 1
                             </div>
                         </div>
@@ -471,7 +585,7 @@
                                             </div>
                                         </div>
                                         <div
-                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                             The Star Named EOS
                                         </div>
                                     </div>
@@ -505,7 +619,7 @@
                                         <img src="images/dcl_screenshot.jpg" alt="[Designer Creative Lab.]"
                                             class="w-full h-full object-cover transition-all duration-500">
                                         <div
-                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                             Designer Creative Lab.
                                         </div>
                                     </div>
@@ -546,7 +660,7 @@
                                             </div>
                                         </div>
                                         <div
-                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                             SML WONDER EXPO 2021
                                         </div>
                                     </div>
@@ -587,7 +701,7 @@
                                             </div>
                                         </div>
                                         <div
-                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                             ONE PIECE BON! BON! JOURNEY!!
                                         </div>
                                     </div>
@@ -628,13 +742,15 @@
                                             </div>
                                         </div>
                                         <div
-                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                            class="absolute bottom-4 left-4 bg-white px-3 py-1 text-xs font-bold opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity">
                                             The Beaters
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
 
                     </div>
                 </section>
@@ -750,7 +866,7 @@
 
                     <p class="font-bold text-base mt-4">技術規劃與效能優化</p>
                     <ul class="list-disc ml-6 space-y-1 mb-6 font-normal">
-                        <li>L擔任專案初期的技術研究與整合、美術製程規劃負責人，建立技術標準，確保資源可穩定導入</li>
+                        <li>擔任專案初期的技術研究與整合、美術製程規劃負責人，建立技術標準，確保資源可穩定導入</li>
                         <li>主導美術資源效能優化，提升中低階裝置的穩定性</li>
                         <li>熟悉 Unity 實裝流程，能獨立完成資源匯入、設定與整合，降低技術門檻並加速交付</li>
                     </ul>
@@ -885,6 +1001,7 @@
                         </ul>
                     </div>
                 `,
+
                 'back-to-top': 'Top',
             },
             'en': {
@@ -989,13 +1106,19 @@
 
             const btnZhSpan = document.querySelector('#btn-zh span');
             const btnEnSpan = document.querySelector('#btn-en span');
+            const mobileBtnZhSpan = document.querySelector('#mobile-btn-zh span');
+            const mobileBtnEnSpan = document.querySelector('#mobile-btn-en span');
 
             if (lang === 'zh') {
-                btnZhSpan.className = 'pb-1 text-black font-bold transition-all duration-300';
-                btnEnSpan.className = 'pb-1 text-gray-400 hover:text-black transition-all duration-300';
+                if (btnZhSpan) btnZhSpan.className = 'pb-1 text-black font-bold transition-all duration-300';
+                if (btnEnSpan) btnEnSpan.className = 'pb-1 text-gray-400 hover:text-black transition-all duration-300';
+                if (mobileBtnZhSpan) mobileBtnZhSpan.className = 'pb-1 text-black font-bold transition-all duration-300';
+                if (mobileBtnEnSpan) mobileBtnEnSpan.className = 'pb-1 text-gray-400 hover:text-black transition-all duration-300';
             } else {
-                btnZhSpan.className = 'pb-1 text-gray-400 hover:text-black transition-all duration-300';
-                btnEnSpan.className = 'pb-1 text-black font-bold transition-all duration-300';
+                if (btnZhSpan) btnZhSpan.className = 'pb-1 text-gray-400 hover:text-black transition-all duration-300';
+                if (btnEnSpan) btnEnSpan.className = 'pb-1 text-black font-bold transition-all duration-300';
+                if (mobileBtnZhSpan) mobileBtnZhSpan.className = 'pb-1 text-gray-400 hover:text-black transition-all duration-300';
+                if (mobileBtnEnSpan) mobileBtnEnSpan.className = 'pb-1 text-black font-bold transition-all duration-300';
             }
         }
 
@@ -1019,27 +1142,30 @@
                 document.body.style.overflow = '';
             }
 
-            navLinks.forEach(link => {
+            document.querySelectorAll('.nav-link').forEach(link => {
                 const span = link.querySelector('span');
-
                 link.classList.remove('active-link');
-
                 if (span) {
                     span.classList.remove('font-bold', 'font-normal');
                     span.classList.add('font-normal');
                 }
             });
 
-            if (clickedLink) {
-                const clickedSpan = clickedLink.querySelector('span');
+            const activeLinks = [
+                document.getElementById(`nav-${pageId}`),
+                document.getElementById(`mobile-nav-${pageId}`)
+            ];
 
-                clickedLink.classList.add('active-link');
-
-                if (clickedSpan) {
-                    clickedSpan.classList.remove('font-normal');
-                    clickedSpan.classList.add('font-bold');
+            activeLinks.forEach(link => {
+                if (link) {
+                    const span = link.querySelector('span');
+                    link.classList.add('active-link');
+                    if (span) {
+                        span.classList.remove('font-normal');
+                        span.classList.add('font-bold');
+                    }
                 }
-            }
+            });
 
             sections.forEach(section => {
                 if (section.id === pageId) {
@@ -1048,7 +1174,6 @@
                     if (isDesktop()) {
                         mainContent.scrollTop = 0;
                     }
-                    // Mobile: no auto-scroll, user stays at current position
                 } else {
                     section.classList.add('hidden');
                 }
@@ -1128,10 +1253,7 @@
 
         window.onload = function () {
             lucide.createIcons();
-            const initialLink = document.getElementById('nav-home');
-            if (initialLink) {
-                showPage('home', initialLink);
-            }
+            showPage('home');
             setLanguage('zh');
         };
 
@@ -1251,6 +1373,30 @@
                     top: 0,
                     behavior: 'smooth'
                 });
+            }
+        }
+
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const isActive = overlay.classList.contains('active');
+
+            if (isActive) {
+                closeMobileMenuDirect();
+            } else {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileMenuDirect() {
+            const overlay = document.getElementById('mobile-menu-overlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeMobileMenu(event) {
+            if (event.target.id === 'mobile-menu-overlay') {
+                closeMobileMenuDirect();
             }
         }
     </script>
